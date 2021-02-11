@@ -75,9 +75,14 @@ score_list = ws.col_values(col_num)
 excel_wb = openpyxl.load_workbook(excel_file_path)
 excel_ws = excel_wb[excel_wb.sheetnames[0]]
 
+# 学生証番号をハイフンで区切る
+def format_student_id(raw_student_id):
+    raw_student_id = str(raw_student_id)
+    return raw_student_id[0:2] + "-" + raw_student_id[2:]
+
 #スコアを入力し保存
 for row_idx in range(excel_row_offset + 1, excel_ws.max_row + 1):
-    excel_student_id = excel_ws.cell(row=row_idx, column=5).value
+    excel_student_id = format_student_id(excel_ws.cell(row=row_idx, column=5).value)
     for score_idx in range(gspread_row_offset, len(student_id_list)):
         gspread_student_id = student_id_list[score_idx]
         if excel_student_id == gspread_student_id:
