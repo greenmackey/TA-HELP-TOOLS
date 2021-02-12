@@ -6,7 +6,7 @@ import glob
 import openpyxl
 
 # フィードバックファイルを格納しているディレクトリのパス
-print("フィードバックファイルを格納しているディレクトリの絶対パス:")
+print("フィードバックファイルを格納しているディレクトリの絶対パス（e.g. /Users/hoge/Desktop/.../フィードバック）:")
 feedback_directory_path = input()
 
 # 書き込む先のエクセルファイルの絶対パス
